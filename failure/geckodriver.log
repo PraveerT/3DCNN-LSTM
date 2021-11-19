@@ -1,0 +1,117 @@
+1636580724351	geckodriver	INFO	Listening on 127.0.0.1:58937
+1636580736087	geckodriver	INFO	Listening on 127.0.0.1:58965
+1636580739096	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileAadLXt"
+1636580744191	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileAadLXt\\search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 770))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1636580766359	Marionette	INFO	Listening on port 58973
+1636580767050	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource:///actors/FormValidationChild.jsm, line 177: TypeError: this._element is null
+1636580773294	Marionette	INFO	Stopped listening on port 58973
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+1636580882925	geckodriver	INFO	Listening on 127.0.0.1:59299
+1636580885910	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileD1oFWV"
+1636580886755	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileD1oFWV\\search.json.mozlz4", (void 0)))
+1636580892648	Marionette	INFO	Listening on port 59308
+1636580893440	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636580911299	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1636580998333	Marionette	INFO	Stopped listening on port 59308
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1636581050627	geckodriver	INFO	Listening on 127.0.0.1:59613
+1636581053644	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile99o1r0"
+1636581054387	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile99o1r0\\search.json.mozlz4", (void 0)))
+1636581059260	Marionette	INFO	Listening on port 59626
+1636581060241	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636581064725	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D0QNiZfSsPc0&hl=en&ec=65620 line 1 > eval line 3938 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 194: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+JavaScript warning: https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D0QNiZfSsPc0&hl=en&ec=65620 line 1 > eval line 7516 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D0QNiZfSsPc0&hl=en&ec=65620&flowName=GlifWebSignIn&flowEntry=ServiceLogin line 1 > eval line 4910 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1636581163174	Marionette	INFO	Stopped listening on port 59626
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1636581258468	geckodriver	INFO	Listening on 127.0.0.1:60142
+1636581261488	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileovPwoU"
+1636581261940	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileovPwoU\\search.json.mozlz4", (void 0)))
+1636581266818	Marionette	INFO	Listening on port 60159
+1636581267574	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636581272619	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[Child 15976, MediaDecoderStateMachine #1] WARNING: aa04c8d9e0 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+1636581278050	Marionette	INFO	Stopped listening on port 60159
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+1636581283985	geckodriver	INFO	Listening on 127.0.0.1:60251
+1636581286995	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileo2SMkm"
+1636581287392	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofileo2SMkm\\search.json.mozlz4", (void 0)))
+1636581291897	Marionette	INFO	Listening on port 60259
+1636581292498	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636581296670	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[Child 9660, MediaDecoderStateMachine #1] WARNING: 99efa1e660 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+JavaScript warning: https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D0QNiZfSsPc0&hl=en&ec=65620 line 1 > eval line 2064 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/6JxZOoUR1o3jKlvIC1xEK4PVT34jONQGt3Oa0a98nkQ.js line 1 > eval line 4490 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1636581656634	Marionette	INFO	Stopped listening on port 60259
+[Parent 1080, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+emote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile2xrORd"
+1636581629243	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile2xrORd\\search.json.mozlz4", (void 0)))
+1636581635902	Marionette	INFO	Listening on port 61164
+1636581636298	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1636581641335	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[Child 17016, MediaDecoderStateMachine #1] WARNING: 11036f29e0 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+1636581653720	Marionette	INFO	Stopped listening on port 61164
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+1636581658847	geckodriver	INFO	Listening on 127.0.0.1:61294
+1636581661577	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile6vZUAi"
+1636581662064	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\prav\\AppData\\Local\\Temp\\rust_mozprofile6vZUAi\\search.json.mozlz4", (void 0)))
+1636581669663	Marionette	INFO	Listening on port 61303
+1636581669812	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+1636581684190	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[Child 9244, MediaDecoderStateMachine #1] WARNING: ee26ca1740 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+1636582005244	Marionette	INFO	Stopped listening on port 61303
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x39007A,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+81869402	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+[Child 13808, MediaDecoderStateMachine #1] WARNING: 34f1bce900 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+1636581997392	Marionette	INFO	Stopped listening on port 63692
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x39007A,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+nitialized'.
+[Child 11204, MediaDecoderStateMachine #1] WARNING: 6b31627c80 Could not set cubeb stream name.: file /builds/worker/checkouts/gecko/dom/media/AudioStream.cpp:367
+1636581994339	Marionette	INFO	Stopped listening on port 63916
