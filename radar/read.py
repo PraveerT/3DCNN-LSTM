@@ -2,6 +2,9 @@ import serial
 import time
 import numpy as np
 import pyqtgraph as pg
+import cv2
+camera = cv2.VideoCapture("http://192.168.100.6:8080/video")
+
 
 # Change the configuration file name
 configFileName = '1642config.cfg'
@@ -295,7 +298,8 @@ def perform(name,samples,CI):
                 if len(detObj["x"])>0:
                     # Store the current frame into frameData
                     print(currentIndex)
-                    frameData[currentIndex] = detObj
+                    ret, frame = camera.read()
+                    frameData[currentIndex] = detObj,ret,frame
 
 
                     currentIndex += 1
@@ -309,12 +313,12 @@ def perform(name,samples,CI):
 
             # Stop the program and close everything if Ctrl + c is pressed
             except Exception as e:
-
+                ret, frame = camera.read()
                 detObj={'numObj': 1, 'rangeIdx': np.array([0]), 'range': np.array([0]), 'dopplerIdx': np.array([0],\
 ), 'doppler': np.array([ 0]), 'peakVal': np.array([ 0]), 'x': np.array([0]), 'y': np.array([0.5]), 'z': np.array([0])}
 
                 print(currentIndex)
-                frameData[currentIndex] = detObj
+                frameData[currentIndex] = detObj,ret,frame
                 currentIndex += 1
                 if currentIndex == CI:
                     motion[name] = frameData
