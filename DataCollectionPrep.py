@@ -28,22 +28,22 @@ np.set_printoptions(threshold=np.inf)
 inputsamples=1
 inputname=4
 motionname='Hand2'
-CI=30
+Frames=60
 label=np.array([inputname]*inputsamples)
 def run():
-    motion,name,opticalmotion=read.perform(inputname,inputsamples,CI)
+    motion,name,opticalmotion=read.perform(inputname,inputsamples,Frames)
 
     xmap = interp1d([-2,2],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
     ymap = interp1d([0,1.5],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
 
     RadarMotionArray=[]
     OpticalMotionArray=[]
-    matrixav=np.zeros((inputsamples,CI,5))
+    matrixav=np.zeros((inputsamples,Frames,5))
     for alpha in range(1,inputsamples+1):
 
         RadarFrameArray=[]
         OpticalFrameArray=[]
-        for frame in range(0,CI):
+        for frame in range(0,Frames):
             matrix = np.zeros((100, 100,3))
             xpositions=motion[str(alpha)][frame]['x']
             ypositions=motion[str(alpha)][frame]['y']
