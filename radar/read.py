@@ -7,7 +7,7 @@ camera = cv2.VideoCapture("http://192.168.100.6:8080/video")
 
 
 # Change the configuration file name
-configFileName = '1642config.cfg'
+configFileName = "radar\\1642config.cfg"
 CLIport = {}
 Dataport = {}
 byteBuffer = np.zeros(2**15,dtype = 'uint8')
@@ -286,8 +286,10 @@ def perform(name,samples,CI):
     configParameters = parseConfigFile(configFileName)
 
     motion={}
+    opticalmotion={}
     for i in range(1, samples+1):
         frameData = {}
+        cameraData={}
         currentIndex = 0
         name = str(i)
         while True:
@@ -299,7 +301,9 @@ def perform(name,samples,CI):
                     # Store the current frame into frameData
                     print(currentIndex)
                     ret, frame = camera.read()
-                    frameData[currentIndex] = detObj,ret,frame
+                    frameData[currentIndex] = detObj
+                    cameraData[currentIndex]=ret,frame
+
 
 
                     currentIndex += 1
@@ -307,6 +311,7 @@ def perform(name,samples,CI):
 
                 if currentIndex==CI:
                     motion[name]=frameData
+                    opticalmotion[name] =cameraData
                     break
 
                 time.sleep(0.03) # Sampling frequency of 30 Hz
@@ -318,17 +323,19 @@ def perform(name,samples,CI):
 ), 'doppler': np.array([ 0]), 'peakVal': np.array([ 0]), 'x': np.array([0]), 'y': np.array([0.5]), 'z': np.array([0])}
 
                 print(currentIndex)
-                frameData[currentIndex] = detObj,ret,frame
+                frameData[currentIndex] = detObj
+                cameraData[currentIndex] = ret, frame
                 currentIndex += 1
                 if currentIndex == CI:
                     motion[name] = frameData
+                    opticalmotion[name] = cameraData
                     break
                 time.sleep(0.03)  # Sampling frequency of 30 Hz
 
     CLIport.write(('sensorStop\n').encode())
     CLIport.close()
     Dataport.close()
-    return motion,name
+    return motion,name,opticalmotion
 
 
 

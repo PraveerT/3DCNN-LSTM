@@ -72,44 +72,43 @@ def run():
 
         RadarMotion = np.stack(RadarFrameArray,axis=0)
         OpticalMotion=np.stack(OpticalFrameArray,axis=0)
-        RadarMotionArray.append(RadarMotion)
-        OpticalMotionArray.append(OpticalMotion)
-    #-----------------------------------------------------------------------------------
-
-    RadarMotionCollectionArray=np.stack(RadarMotionArray,axis=0)
-    OpticalMotionCollectionArray=np.stack(OpticalMotionArray,axis=0)
+        RadarMotion=np.expand_dims(RadarMotion, axis=0)
+        OpticalMotion = np.expand_dims(OpticalMotion, axis=0)
 
 
 
 
 
     try:
+
         #------------------------------------------------------------------
         #Radar Numpy Output: RNO
 
-        RadarNumpyOutput=load("motions\\radar.npy")
-        RadarNumpyOutputConcatenate = np.concatenate((RadarNumpyOutput, RadarMotionCollectionArray), axis=0)
+        RadarNumpyOutput=load("motions\\Radar.npy")
+        RadarNumpyOutputConcatenate = np.concatenate((RadarNumpyOutput, RadarMotion), axis=0)
         save("motions\\Radar.npy", RadarNumpyOutputConcatenate)
 
         #-------------------------------------------------------------------
         # Optical Numpy Output: ONO
 
         OpticalNumpyOutput = load("motions\Optical.npy")
-        OpticalNumpyOutputConcatenate = np.concatenate((OpticalNumpyOutput, OpticalMotionCollectionArray), axis=0)
+        OpticalNumpyOutputConcatenate = np.concatenate((OpticalNumpyOutput, OpticalMotion), axis=0)
         save("motions\Optical.npy", OpticalNumpyOutputConcatenate)
         #-------------------------------------------------------------------
         # Average Radar Output: AO
 
         AverageRadarOutput = load("motions\AverageRadar.npy")
-        AverageRadarOutputConcatenate = np.concatenate((AverageRadarOutput, matrixlstm), axis=0)
+        AverageRadarOutputConcatenate = np.concatenate((AverageRadarOutput, matrixav), axis=0)
         save("motions\AverageRadar.npy", AverageRadarOutputConcatenate)
         #-------------------------------------------------------------------
         # Label Numpy Output: LNO
 
-        LabelNumpyOutput = load("motions\labels.npy")
+
+        LabelNumpyOutput = load("motions\Labels.npy")
         LabelNumpyOutputConcatenate = np.concatenate((LabelNumpyOutput, label), axis=0)
         save("motions\Labels.npy", LabelNumpyOutputConcatenate)
         #-------------------------------------------------------------------
+
 
 
         print(RadarNumpyOutputConcatenate.shape)
@@ -117,16 +116,17 @@ def run():
         print(AverageRadarOutputConcatenate.shape)
         print(LabelNumpyOutputConcatenate.shape)
 
+
     except:
 
-        save("motions\\Radar.npy" , RadarFrameCollectionArray)
-        save("motions\Optical.npy", OpticalFrameCollectionArray)
+        save("motions\\Radar.npy" , RadarMotion)
+        save("motions\Optical.npy", OpticalMotion)
         save("motions\AverageRadar.npy", matrixav)
         save("motions\Labels.npy" , label)
 
-        print(RadarFrameCollectionArray.shape)
-        print(OpticalFrameCollectionArray.shape)
-        print(matrixlstm.shape)
+        print(RadarMotion.shape)
+        print(OpticalMotion.shape)
+        print(matrixav.shape)
         print(label.shape)
 
 
