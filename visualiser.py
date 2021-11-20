@@ -16,7 +16,7 @@ label=load("motions\Labels.npy")
 
 
 print (OpticalData.shape)
-motion=2
+motion=0
 def auto_canny(image, sigma=0.33):
     # compute the median of the single channel pixel intensities
     v = np.median(image)
@@ -28,7 +28,7 @@ def auto_canny(image, sigma=0.33):
 
 
 while True:
-    for i,b in zip(RadarData[motion,:,:,:],OpticalData[motion,:,400:1200,500:1600]):
+    for i,b in zip(RadarData[motion,:,:,:],OpticalData[motion,:,:,:]):
         b = cv2.rotate(b, cv2.ROTATE_90_CLOCKWISE)
         gray = cv2.cvtColor(b, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (3, 3), 0)
