@@ -3,7 +3,7 @@ import time
 import numpy as np
 import pyqtgraph as pg
 import cv2
-camera = cv2.VideoCapture("http://192.168.100.6:8080/video")
+
 
 
 # Change the configuration file name
@@ -275,67 +275,89 @@ def readAndParseData16xx(Dataport, configParameters):
 
 # -------------------------    MAIN   -----------------------------------------  
 
+import cv2, queue, threading, time
+
+# bufferless VideoCapture
+class VideoCapture:
+
+  def __init__(self, name):
+    self.cap = cv2.VideoCapture(name)
+    self.q = queue.Queue()
+    t = threading.Thread(target=self._reader)
+    t.daemon = True
+    t.start()
+
+  # read frames as soon as they are available, keeping only most recent one
+  def _reader(self):
+    while True:
+      ret, frame = self.cap.read()
+      if not ret:
+        break
+      if not self.q.empty():
+        try:
+          self.q.get_nowait()   # discard previous (unprocessed) frame
+        except queue.Empty:
+          pass
+      self.q.put(frame)
+
+  def read(self):
+    return self.q.get()
 
 
 # Main loop
 def perform(name,samples,CI):
     # Configurate the serial port
-    CLIport, Dataport = serialConfig(configFileName)
 
-    # Get the configuration parameters from the configuration file
-    configParameters = parseConfigFile(configFileName)
+
 
     motion={}
     opticalmotion={}
     for i in range(1, samples+1):
+
+        CLIport, Dataport = serialConfig(configFileName)
+        # Get the configuration parameters from the configuration file
+        configParameters = parseConfigFile(configFileName)
+
+        cap = VideoCapture("http://192.168.100.6:8080/video")
         frameData = {}
         cameraData={}
         currentIndex = 0
         name = str(i)
         while True:
 
-            try:
+            frame = cap.read()
 
-                dataOk, frameNumber, detObj = readAndParseData16xx(Dataport, configParameters)
-                if len(detObj["x"])>0:
-                    # Store the current frame into frameData
-                    print(currentIndex)
-                    ret, frame = camera.read()
-                    frameData[currentIndex] = detObj
-                    cameraData[currentIndex]=ret,frame
+            dataOk, frameNumber, detObj = readAndParseData16xx(Dataport, configParameters)
+            if detObj=={}:
+                detObj = {'numObj': 1, 'rangeIdx': np.array([0]), 'range': np.array([0]),
+                          'dopplerIdx': np.array([0]),
+                          'doppler': np.array([0]), 'peakVal': np.array([0]), 'x': np.array([0]),
+                          'y': np.array([0.5]),
+                          'z': np.array([0])}
+            # Store the current frame into frameData
+            print(currentIndex)
+            frameData[currentIndex] = detObj
+            cameraData[currentIndex]=frame
+            currentIndex += 1
 
 
 
-                    currentIndex += 1
 
+            if currentIndex==CI:
+                motion[name]=frameData
+                opticalmotion[name] =cameraData
+                CLIport.write(('sensorStop\n').encode())
+                CLIport.close()
+                Dataport.close()
+                break
 
-                if currentIndex==CI:
-                    motion[name]=frameData
-                    opticalmotion[name] =cameraData
-                    break
-
-                time.sleep(0.03) # Sampling frequency of 30 Hz
-
+            time.sleep(0.03)  # Sampling frequency of 30 Hz
             # Stop the program and close everything if Ctrl + c is pressed
-            except Exception as e:
-                ret, frame = camera.read()
-                detObj={'numObj': 1, 'rangeIdx': np.array([0]), 'range': np.array([0]), 'dopplerIdx': np.array([0],\
-), 'doppler': np.array([ 0]), 'peakVal': np.array([ 0]), 'x': np.array([0]), 'y': np.array([0.5]), 'z': np.array([0])}
 
-                print(currentIndex)
-                frameData[currentIndex] = detObj
-                cameraData[currentIndex] = ret, frame
-                currentIndex += 1
-                if currentIndex == CI:
-                    motion[name] = frameData
-                    opticalmotion[name] = cameraData
-                    break
-                time.sleep(0.03)  # Sampling frequency of 30 Hz
 
-    CLIport.write(('sensorStop\n').encode())
-    CLIport.close()
-    Dataport.close()
-    return motion,name,opticalmotion
+
+
+        return motion,name,opticalmotion
 
 
 

@@ -25,16 +25,18 @@ def Average(lst):
 #4 pause
 pred=0
 np.set_printoptions(threshold=np.inf)
+
 inputsamples=1
-inputname=4
+inputname=1
+
 motionname='Hand2'
 Frames=60
 label=np.array([inputname]*inputsamples)
 def run():
     motion,name,opticalmotion=read.perform(inputname,inputsamples,Frames)
 
-    xmap = interp1d([-2,2],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
-    ymap = interp1d([0,1.5],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
+    xmap = interp1d([-0.2,0.2],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
+    ymap = interp1d([0,0.6],[0,99],bounds_error=False,fill_value=(0,99),kind='linear')
 
     RadarMotionArray=[]
     OpticalMotionArray=[]
@@ -65,7 +67,7 @@ def run():
             #---------------------------------------------------------------------------
             #List of frames
             RadarFrameArray.append(matrix)
-            OpticalFrameArray.append(opticalmotion[str(alpha)][frame][1])
+            OpticalFrameArray.append(opticalmotion[str(alpha)][frame])
 
         #-------------------------------------------------------------------------------
         #Motion
@@ -131,6 +133,7 @@ def run():
 
 
 
-for someval in range(0,1):
-    time.sleep(3)
+for someval in range(0,10):
+
     run()
+    time.sleep(3)
