@@ -325,10 +325,12 @@ def perform(name,samples,CI):
         name = str(i)
         while True:
 
-            frame = cap.read()
+
 
             dataOk, frameNumber, detObj = readAndParseData16xx(Dataport, configParameters)
+            frame = cap.read()
             if detObj=={}:
+
                 detObj = {'numObj': 1, 'rangeIdx': np.array([0]), 'range': np.array([0]),
                           'dopplerIdx': np.array([0]),
                           'doppler': np.array([0]), 'peakVal': np.array([0]), 'x': np.array([0]),
@@ -337,7 +339,7 @@ def perform(name,samples,CI):
             # Store the current frame into frameData
             print(currentIndex)
             frameData[currentIndex] = detObj
-            cameraData[currentIndex]=frame
+            cameraData[currentIndex]=frame[20:120,20:120]
             currentIndex += 1
 
 

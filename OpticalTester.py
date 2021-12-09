@@ -12,7 +12,6 @@ from scipy.optimize import curve_fit
 from scipy.interpolate import interp1d
 from scipy.ndimage import convolve
 import matplotlib.pyplot as plt
-import cv2
 from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure()
 
@@ -26,7 +25,7 @@ def Average(lst):
 #4 pause
 pred=0
 inputsamples=1
-inputname=1
+inputname=0
 
 motionname='Hand2'
 Frames=60
@@ -76,11 +75,6 @@ def run():
         RadarMotion=np.expand_dims(RadarMotion, axis=0)
         OpticalMotion = np.expand_dims(OpticalMotion, axis=0)
 
-    folder="test"
-    PathMotionRadar=folder+"/Radar.npy"
-    PathMotionOptical=folder+"/Optical.npy"
-    PathMotionAverageRadar=folder+"/AverageRadar.npy"
-    PathMotionLabel=folder+"/Labels.npy"
 
 
 
@@ -90,29 +84,29 @@ def run():
         #------------------------------------------------------------------
         #Radar Numpy Output: RNO
 
-        RadarNumpyOutput=load(PathMotionRadar)
+        RadarNumpyOutput=load("Test\\Radar.npy")
         RadarNumpyOutputConcatenate = np.concatenate((RadarNumpyOutput, RadarMotion), axis=0)
-        save(PathMotionRadar, RadarNumpyOutputConcatenate)
+        save("Test\\Radar.npy", RadarNumpyOutputConcatenate)
 
         #-------------------------------------------------------------------
         # Optical Numpy Output: ONO
 
-        OpticalNumpyOutput = load(PathMotionOptical)
+        OpticalNumpyOutput = load("C:\\Users\prav\Dropbox\source\OpticalTest.npy")
         OpticalNumpyOutputConcatenate = np.concatenate((OpticalNumpyOutput, OpticalMotion), axis=0)
-        save(PathMotionOptical, OpticalNumpyOutputConcatenate)
+        save("C:\\Users\prav\Dropbox\source\OpticalTest.npy", OpticalNumpyOutputConcatenate)
         #-------------------------------------------------------------------
         # Average Radar Output: AO
 
-        AverageRadarOutput = load(PathMotionAverageRadar)
+        AverageRadarOutput = load("Test\AverageRadar.npy")
         AverageRadarOutputConcatenate = np.concatenate((AverageRadarOutput, matrixav), axis=0)
-        save(PathMotionAverageRadar, AverageRadarOutputConcatenate)
+        save("Test\AverageRadar.npy", AverageRadarOutputConcatenate)
         #-------------------------------------------------------------------
         # Label Numpy Output: LNO
 
 
-        LabelNumpyOutput = load(PathMotionLabel)
+        LabelNumpyOutput = load("Test\Labels.npy")
         LabelNumpyOutputConcatenate = np.concatenate((LabelNumpyOutput, label), axis=0)
-        save(PathMotionLabel, LabelNumpyOutputConcatenate)
+        save("Test\Labels.npy", LabelNumpyOutputConcatenate)
         #-------------------------------------------------------------------
 
 
@@ -125,10 +119,10 @@ def run():
 
     except:
 
-        save(PathMotionRadar , RadarMotion)
-        save(PathMotionOptical, OpticalMotion)
-        save(PathMotionAverageRadar, matrixav)
-        save(PathMotionLabel , label)
+        save("Test\\Radar.npy" , RadarMotion)
+        save("C:\\Users\prav\Dropbox\source\OpticalTest.npy", OpticalMotion)
+        save("Test\AverageRadar.npy", matrixav)
+        save("Test\Labels.npy" , label)
 
         print(RadarMotion.shape)
         print(OpticalMotion.shape)
@@ -136,43 +130,6 @@ def run():
         print(label.shape)
 
 
-
-
-
-for someval in range(0,5):
-
+while True:
     run()
-    time.sleep(2)
-
-print (label)
-
-
-folder="test"
-def auto_canny(image, sigma=0.33):
-    # compute the median of the single channel pixel intensities
-    v = np.median(image)
-    lower = int(max(0, (1.0 - sigma) * v))
-    upper = int(min(255, (1.0 + sigma) * v))
-    edged = cv2.Canny(image, lower, upper)
-    # return the edged image
-    return edged
-OpticalData=load(folder+"/Optical.npy")
-RadarData=load(folder+"/Radar.npy")
-arr=OpticalData.shape[0]*OpticalData.shape[1]
-OpticalData.resize(arr,100,100,3)
-output=np.empty((arr,100,100,3),dtype=np.uint8)
-
-
-for frame,len in zip(OpticalData,range(len(OpticalData))):
-    gray=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.GaussianBlur(gray, (3, 3), 0)
-    auto = auto_canny(blurred)
-    _,thresh1=cv2.threshold(blurred,127,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    data=np.stack([gray,blurred,thresh1],axis=2)
-    output[len,:,:,:]=data
-
-
-output.resize(RadarData.shape[0],RadarData.shape[1],100,100,3)
-print (output.shape)
-np.save(folder+'/ThreshGrayOpticalData.npy',output)
-#
+    time.sleep(10)
