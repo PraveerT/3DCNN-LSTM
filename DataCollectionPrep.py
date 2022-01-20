@@ -26,7 +26,7 @@ def Average(lst):
 #4 pause
 pred=0
 inputsamples=1
-inputname=1
+inputname=5
 
 motionname='Hand2'
 Frames=60
@@ -76,7 +76,7 @@ def run():
         RadarMotion=np.expand_dims(RadarMotion, axis=0)
         OpticalMotion = np.expand_dims(OpticalMotion, axis=0)
 
-    folder="test"
+    folder="C:/Users/prav/Dropbox/source"
     PathMotionRadar=folder+"/Radar.npy"
     PathMotionOptical=folder+"/Optical.npy"
     PathMotionAverageRadar=folder+"/AverageRadar.npy"
@@ -147,7 +147,7 @@ for someval in range(0,5):
 print (label)
 
 
-folder="test"
+folder="C:/Users/prav/Dropbox/source"
 def auto_canny(image, sigma=0.33):
     # compute the median of the single channel pixel intensities
     v = np.median(image)

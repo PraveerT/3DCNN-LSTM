@@ -24,7 +24,7 @@ org = (50, 50)
 org1 = (90, 50)
 thickness = 2
 folder="C:/Users/prav/Dropbox/source"
-OpticalData=load(folder+"/Optical.npy")
+OpticalData=load(folder+"/FgMask.npy")
 RadarData=np.transpose(load(folder+"/Radar.npy"), (0,1,3,2,4))
 label=load(folder+"/Labels.npy")
 output=load(folder+"/ThreshGrayOpticalData.npy")
@@ -43,13 +43,9 @@ def auto_canny(image, sigma=0.33):
 
 while True:
     for motion in range(20,OpticalData.shape[0]):
-        for framegray,frameblurred,framethresh,frameout,Radarout in zip(output[motion,:,:,:,0],
-        output[motion,:,:,:,1],output[motion,:,:,:,2],OpticalData[motion],RadarData[motion]):
-            cv2.imshow('Optical',frameout)
-            cv2.imshow('Gray',framegray)
-            cv2.imshow('Blurred', frameblurred)
-            cv2.imshow('Thresh', framethresh)
-            cv2.imshow('Radar', Radarout)
+        for frame in OpticalData[motion]:
+            cv2.imshow('Optical',frame)
+
             time.sleep(0.03)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
